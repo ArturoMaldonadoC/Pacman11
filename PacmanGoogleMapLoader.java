@@ -17,6 +17,14 @@ public class PacmanGoogleMapLoader implements StaticMapLoader
         addPowerItems(map);
         
         map.addObject(new PacMan(), 50, 150);
+        
+        map.addObject(new BluePhantom(), 380, 350);
+        
+        map.addObject(new OrangePhantom(), 400, 370);
+        
+        map.addObject(new PinkPhantom(), 420, 350);
+        
+        map.addObject(new RedPhantom(), 400, 330);
 
         return map;
     }

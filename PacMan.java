@@ -50,13 +50,14 @@ public class PacMan extends Person
         if(lastKeyPressed != null)
         {
           
-            getWorld().showText(lastKeyPressed, 100, 10);
+            //getWorld().showText(lastKeyPressed, 100, 10);
             
             movePacman(lastKeyPressed);
         }
         
         checkCollisions();
-        
+        points+=eatPoints();
+        getWorld().showText(Integer.toString(points), 100, 10);
     }    
     
     void movePacman(String keyPressed)
@@ -111,6 +112,18 @@ public class PacMan extends Person
         {
             movementInY = 0;
             movementInX = 0;
+        }
+    }
+    
+    int eatPoints(){
+        if(isTouching(SmallPoint.class)){
+            getWorld().removeObject(getOneIntersectingObject(SmallPoint.class));
+            return 10;
+        } else if(isTouching(PowerPoint.class)){
+            getWorld().removeObject(getOneIntersectingObject(PowerPoint.class));
+            return 50;
+        } else {
+        return 0;
         }
     }
 }
