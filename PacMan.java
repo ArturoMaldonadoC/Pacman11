@@ -95,16 +95,16 @@ public class PacMan extends Person
         switch(direction)
         {
             case UP:
-                wall = (Wall)getOneObjectAtOffset(0, -20, Wall.class);
+                wall = (Wall)getOneObjectAtOffset(0, -35, Wall.class);
             break;
             case DOWN:
-                wall = (Wall)getOneObjectAtOffset(0, 20, Wall.class);
+                wall = (Wall)getOneObjectAtOffset(0, 35, Wall.class);
             break;
             case RIGHT:
-                wall = (Wall)getOneObjectAtOffset(20, 0, Wall.class);
+                wall = (Wall)getOneObjectAtOffset(35, 0, Wall.class);
             break;
             case LEFT:
-                wall = (Wall)getOneObjectAtOffset(-20, 0, Wall.class);
+                wall = (Wall)getOneObjectAtOffset(-35, 0, Wall.class);
             break;
         }
         
@@ -116,14 +116,11 @@ public class PacMan extends Person
     }
     
     int eatPoints(){
-        if(isTouching(SmallPoint.class)){
-            getWorld().removeObject(getOneIntersectingObject(SmallPoint.class));
-            return 10;
-        } else if(isTouching(PowerPoint.class)){
-            getWorld().removeObject(getOneIntersectingObject(PowerPoint.class));
-            return 50;
-        } else {
-        return 0;
+        if(isTouching(Item.class)){
+            Item item = (Item)getOneIntersectingObject(Item.class);
+            getWorld().removeObject(item);
+            return item.getPoints();
         }
+        return 0;
     }
 }

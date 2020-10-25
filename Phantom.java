@@ -1,4 +1,5 @@
 import java.util.Random;
+import greenfoot.*;
 
 /**
  * Write a description of class Phantom here.
@@ -8,41 +9,70 @@ import java.util.Random;
  */
 public class Phantom extends Person 
 {
+    private int movementInX;
+    private int movementInY;
     private PhantomState phantomState;
     
     public Phantom()
     {
         phantomState = PhantomState.NORMAL;
+        
+        direction = direction.getRandomDirection();
     }
     
-    CharacterDirection getRandomDirection(){
+    public void act(){
         
-        Random rand = new Random();
-        int randomDirection = rand.nextInt(4);
-        CharacterDirection direction = CharacterDirection.RIGHT;
+        setLocation(getX() + movementInX, getY() + movementInY);
         
-        switch(randomDirection){
-            case 0:
-                direction = CharacterDirection.UP;
+        movePhantom();
+        
+        checkCollisions();
+    }
+    
+    
+    void movePhantom(){
+        movementInX = 0;
+        movementInY = 0;
+        
+        switch(direction){
+        case UP:
+            movementInY = -1;
+        break;
+        case DOWN:
+            movementInY = 1;
+        break;
+        case LEFT:
+            movementInX = -1;
+        break;
+        case RIGHT:
+            movementInX = 1;
+        break;
+        }
+    }
+    
+    void checkCollisions()
+    {
+        Wall wall = null; 
+        switch(direction)
+        {
+            case UP:
+                wall = (Wall)getOneObjectAtOffset(0, -20, Wall.class);
             break;
-            case 1:
-                direction = CharacterDirection.DOWN;
+            case DOWN:
+                wall = (Wall)getOneObjectAtOffset(0, 20, Wall.class);
             break;
-            case 2:
-                direction = CharacterDirection.LEFT;
+            case RIGHT:
+                wall = (Wall)getOneObjectAtOffset(20, 0, Wall.class);
+            break;
+            case LEFT:
+                wall = (Wall)getOneObjectAtOffset(-20, 0, Wall.class);
             break;
         }
-        return direction;
-    }
-    
-    CharacterDirection changeDirection(CharacterDirection currentDirection){
-        CharacterDirection newDirection = getRandomDirection();
         
-        while(currentDirection == newDirection){
-            newDirection = getRandomDirection();
+        if(wall != null || isAtEdge())
+        {
+            direction = direction.getRandomDirection();
         }
-        
-        return newDirection;
-    }
     
+    }
 }

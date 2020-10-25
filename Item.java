@@ -8,5 +8,9 @@ import greenfoot.*;
  */
 public class Item extends Actor
 {
-    private int points;
+    protected int points;
+    
+    public int getPoints(){
+        return points;
+    }
 }

@@ -16,56 +16,105 @@ public class PacmanGoogleMapLoader implements StaticMapLoader
 
         addPowerItems(map);
         
-        map.addObject(new PacMan(), 50, 150);
+        map.addObject(new PacMan(), map.getWidth()/2, map.getHeight() - 210);
         
-        map.addObject(new BluePhantom(), 380, 350);
+        map.addObject(new RedPhantom(), map.getWidth()/2, 210);
         
-        map.addObject(new OrangePhantom(), 400, 370);
+        map.addObject(new BluePhantom(), map.getWidth()/2 - 50, map.getHeight()/2);
         
-        map.addObject(new PinkPhantom(), 420, 350);
+        map.addObject(new PinkPhantom(), map.getWidth()/2, map.getHeight()/2);
         
-        map.addObject(new RedPhantom(), 400, 330);
+        map.addObject(new OrangePhantom(), map.getWidth()/2 + 50, map.getHeight()/2);
 
         return map;
     }
 
     void addWalls(Map map)
     {
-        map.addObject(new Wall(), 50, 50);
-        map.addObject(new Wall(), 100, 50);
-        map.addObject(new Wall(), 150, 50);
-        map.addObject(new Wall(), 200, 50);
-        map.addObject(new Wall(), 250, 50);
-
-        map.addObject(new Wall(), 300, 150);
-        map.addObject(new Wall(), 300, 200);
-        map.addObject(new Wall(), 300, 250);
-        map.addObject(new Wall(), 300, 400);
-        map.addObject(new Wall(), 300, 450);
-        map.addObject(new Wall(), 300, 500);
-
-        map.addObject(new Wall(), 450, 650);
-        map.addObject(new Wall(), 500, 650);
-        map.addObject(new Wall(), 550, 650);
-        map.addObject(new Wall(), 600, 650);
-        map.addObject(new Wall(), 650, 650);
+        //External walls
+        for (int i = 0 ; i <= map.getWidth() ; i+=50){
+            map.addObject(new Wall(), i, 25);
+            map.addObject(new Wall(), i, map.getHeight()-25);
+        }
+        
+        for(int i = 75 ; i < map.getHeight()-25 ; i+=50){
+            map.addObject(new Wall(), 25, i);
+            map.addObject(new Wall(), map.getWidth()-25, i);;
+        }
+        
+        //Internal walls (X)(Y)
+        map.addObject(new Wall(), map.getWidth()/2, 75);
+        map.addObject(new Wall(), map.getWidth()/2, 125);
+        
+        map.addObject(new Wall(), map.getWidth()/2, map.getHeight()-75);
+        map.addObject(new Wall(), map.getWidth()/2, map.getHeight()-125);
+        
+        map.addObject(new Wall(), map.getWidth()/5, map.getHeight()-150);
+        map.addObject(new Wall(), map.getWidth()/5+50, map.getHeight()-150);
+        map.addObject(new Wall(), map.getWidth()/5+100, map.getHeight()-150);
+        
+        map.addObject(new Wall(), map.getWidth()/5, 150);
+        map.addObject(new Wall(), map.getWidth()/5+50, 150);
+        map.addObject(new Wall(), map.getWidth()/5+100, 150);
+        
+        map.addObject(new Wall(), (map.getWidth()/7)*5-25, map.getHeight()-150);
+        map.addObject(new Wall(), (map.getWidth()/7)*5+25, map.getHeight()-150);
+        map.addObject(new Wall(), (map.getWidth()/7)*5+75, map.getHeight()-150);
+        
+        map.addObject(new Wall(), (map.getWidth()/7)*5-25, 150);
+        map.addObject(new Wall(), (map.getWidth()/7)*5+25, 150);
+        map.addObject(new Wall(), (map.getWidth()/7)*5+75, 150);
+        
+        map.addObject(new Wall(), map.getWidth()/5, map.getHeight()-200);
+        map.addObject(new Wall(), map.getWidth()/5, map.getHeight()-250);
+        
+        map.addObject(new Wall(), map.getWidth()/5, 200);
+        map.addObject(new Wall(), map.getWidth()/5, 250);
+        
+        map.addObject(new Wall(), (map.getWidth()/7)*5+75, map.getHeight()-200);
+        map.addObject(new Wall(), (map.getWidth()/7)*5+75, map.getHeight()-250);
+        
+        map.addObject(new Wall(), (map.getWidth()/7)*5+75, 200);
+        map.addObject(new Wall(), (map.getWidth()/7)*5+75, 250);
+        
+        map.addObject(new Wall(), map.getWidth()/2, map.getHeight()/2-75);
+        map.addObject(new Wall(), map.getWidth()/2+50, map.getHeight()/2-75);
+        map.addObject(new Wall(), map.getWidth()/2-50, map.getHeight()/2-75);
+        
+        map.addObject(new Wall(), map.getWidth()/2, map.getHeight()/2+75);
+        map.addObject(new Wall(), map.getWidth()/2+50, map.getHeight()/2+75);
+        map.addObject(new Wall(), map.getWidth()/2-50, map.getHeight()/2+75);
     }
 
     void addSmallItems(Map map)
     {
-        for(int x = 50; x < 600; x+=20) {
-            map.addObject(new SmallPoint(), x, 320);
+        for(int x = 100; x < 300; x+=38) {
+            map.addObject(new SmallPoint(), x + 30, 90);
+            map.addObject(new SmallPoint(), map.getWidth() - x - 30 , 90);
+            
+            map.addObject(new SmallPoint(), x + 200, 210);
+            
+            map.addObject(new SmallPoint(), x, map.getHeight()/2);
+            map.addObject(new SmallPoint(), map.getWidth() - x, map.getHeight()/2);
+            
+            map.addObject(new SmallPoint(), x + 30, map.getHeight() - 90);
+            map.addObject(new SmallPoint(), map.getWidth() - x - 30 , map.getHeight() - 90);
+            
+            
+            map.addObject(new SmallPoint(),100, x +30);
+            map.addObject(new SmallPoint(),map.getWidth() - 100, x +30);
+            
+            map.addObject(new SmallPoint(),100, map.getHeight() - x - 30);
+            map.addObject(new SmallPoint(),map.getWidth() - 100, map.getHeight() - x - 30);
         }
     }
 
     void addPowerItems(Map map)
     {
-        map.addObject(new PowerPoint(), 50, 350);
-        map.addObject(new PowerPoint(), 100, 550);
-        map.addObject(new PowerPoint(), 650, 350);
-        map.addObject(new PowerPoint(), 650, 550);
-        map.addObject(new PowerPoint(), 700, 100);
-
+        map.addObject(new PowerPoint(), 95, 90);
+        map.addObject(new PowerPoint(), map.getWidth()-95, 90);
+        map.addObject(new PowerPoint(), 100, map.getHeight()-90);
+        map.addObject(new PowerPoint(), map.getWidth()-100, map.getHeight()-90);
     }
 
 }
