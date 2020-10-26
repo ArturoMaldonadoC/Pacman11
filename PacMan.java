@@ -6,11 +6,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PacMan extends Person
+public class PacMan extends PacManCharacter
 {
     private static final int INITIAL_LIFES = 3;
     private static final int INITIAL_POINTS = 0;
-    private static final int ITERATIONS_TO_CHANGE_SPRITE = 15;
+    private static final int ITERATIONS_TO_CHANGE_SPRITE = 45;
     
     private int lifes;
     private int points;

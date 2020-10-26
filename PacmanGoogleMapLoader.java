@@ -31,7 +31,7 @@ public class PacmanGoogleMapLoader implements StaticMapLoader
 
     void addWalls(Map map)
     {
-        //External walls
+   
         for (int i = 0 ; i <= map.getWidth() ; i+=50){
             map.addObject(new Wall(), i, 25);
             map.addObject(new Wall(), i, map.getHeight()-25);
@@ -42,53 +42,28 @@ public class PacmanGoogleMapLoader implements StaticMapLoader
             map.addObject(new Wall(), map.getWidth()-25, i);;
         }
         
-        //Internal walls (X)(Y)
-        map.addObject(new Wall(), map.getWidth()/2, 75);
-        map.addObject(new Wall(), map.getWidth()/2, 125);
         
         map.addObject(new Wall(), map.getWidth()/2, map.getHeight()-75);
         map.addObject(new Wall(), map.getWidth()/2, map.getHeight()-125);
-        
-        map.addObject(new Wall(), map.getWidth()/5, map.getHeight()-150);
-        map.addObject(new Wall(), map.getWidth()/5+50, map.getHeight()-150);
-        map.addObject(new Wall(), map.getWidth()/5+100, map.getHeight()-150);
         
         map.addObject(new Wall(), map.getWidth()/5, 150);
         map.addObject(new Wall(), map.getWidth()/5+50, 150);
         map.addObject(new Wall(), map.getWidth()/5+100, 150);
         
-        map.addObject(new Wall(), (map.getWidth()/7)*5-25, map.getHeight()-150);
-        map.addObject(new Wall(), (map.getWidth()/7)*5+25, map.getHeight()-150);
-        map.addObject(new Wall(), (map.getWidth()/7)*5+75, map.getHeight()-150);
-        
-        map.addObject(new Wall(), (map.getWidth()/7)*5-25, 150);
-        map.addObject(new Wall(), (map.getWidth()/7)*5+25, 150);
-        map.addObject(new Wall(), (map.getWidth()/7)*5+75, 150);
-        
-        map.addObject(new Wall(), map.getWidth()/5, map.getHeight()-200);
-        map.addObject(new Wall(), map.getWidth()/5, map.getHeight()-250);
-        
-        map.addObject(new Wall(), map.getWidth()/5, 200);
-        map.addObject(new Wall(), map.getWidth()/5, 250);
-        
-        map.addObject(new Wall(), (map.getWidth()/7)*5+75, map.getHeight()-200);
-        map.addObject(new Wall(), (map.getWidth()/7)*5+75, map.getHeight()-250);
-        
-        map.addObject(new Wall(), (map.getWidth()/7)*5+75, 200);
-        map.addObject(new Wall(), (map.getWidth()/7)*5+75, 250);
-        
-        map.addObject(new Wall(), map.getWidth()/2, map.getHeight()/2-75);
-        map.addObject(new Wall(), map.getWidth()/2+50, map.getHeight()/2-75);
-        map.addObject(new Wall(), map.getWidth()/2-50, map.getHeight()/2-75);
-        
-        map.addObject(new Wall(), map.getWidth()/2, map.getHeight()/2+75);
-        map.addObject(new Wall(), map.getWidth()/2+50, map.getHeight()/2+75);
-        map.addObject(new Wall(), map.getWidth()/2-50, map.getHeight()/2+75);
+        map.addObject(new Wall(), (map.getWidth()/7)*5-25, map.getHeight()-175);
+        map.addObject(new Wall(), (map.getWidth()/7)*5+25, map.getHeight()-175);
+        map.addObject(new Wall(), (map.getWidth()/7)*5+75, map.getHeight()-175);
+       
+        map.addObject(new Wall(), map.getWidth()/5, 350);
+        map.addObject(new Wall(), map.getWidth()/5, 500);
+       
+        map.addObject(new Wall(), (map.getWidth()/7)*5+75, 500);
+        map.addObject(new Wall(), (map.getWidth()/7)*5+75, 650);
     }
 
     void addSmallItems(Map map)
     {
-        for(int x = 100; x < 300; x+=38) {
+        for(int x = 100; x < 500; x+=40) {
             map.addObject(new SmallPoint(), x + 30, 90);
             map.addObject(new SmallPoint(), map.getWidth() - x - 30 , 90);
             

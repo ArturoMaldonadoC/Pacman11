@@ -7,7 +7,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Phantom extends Person 
+public class Phantom extends PacManCharacter
 {
     private int movementInX;
     private int movementInY;
